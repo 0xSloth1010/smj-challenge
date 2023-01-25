@@ -1,5 +1,6 @@
 import express, { Express } from 'express'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import pino, { Options } from 'pino-http'
 import errorHandler from './middleware/error'
 import routes from './routes'
@@ -22,6 +23,12 @@ export function makeApp(): Express {
           }
         }
       : {}
+
+  const corsOptions = {
+    origin: 'http://localhost:3000'
+  }
+
+  app.use(cors(corsOptions))
 
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
