@@ -27,8 +27,15 @@ router.put('/url', (async (req, res) => {
   res.json({ url, slug })
 }) as RequestHandler)
 
-router.get('/:slug', (async (_req, res) => {
-  res.status(501).send('Not Implemented')
+router.get('/:slug', (async (req, res) => {
+  const { slug } = req.params
+  const url = await db.getUrl(slug)
+
+  if (!url) {
+    return res.status(404).json('URL not found')
+  }
+
+  res.redirect(url)
 }) as RequestHandler)
 
 export default router
