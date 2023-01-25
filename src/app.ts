@@ -1,4 +1,5 @@
 import express, { Express } from 'express'
+import bodyParser from 'body-parser'
 import pino, { Options } from 'pino-http'
 import errorHandler from './middleware/error'
 import routes from './routes'
@@ -21,6 +22,9 @@ export function makeApp(): Express {
           }
         }
       : {}
+
+  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.json())
 
   app.use(express.json({ verify: () => true })) // Just force it to parse all requests as json
   app.use(pino(options))
