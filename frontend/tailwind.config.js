@@ -8,7 +8,9 @@ module.exports = {
       gray: {
         light: 'rgb(241, 243, 247)',
         dark: '#282c34'
-      }
+      },
+      cyan: '#00ffff',
+      orange: 'rgb(255, 125, 20)'
     },
     extend: {}
   },
