@@ -1,8 +1,10 @@
-import Router from 'express-promise-router'
-// import * as cache from './cache'
-// import * as db from './db'
-// import logger from './lib/logger'
 import { RequestHandler } from 'express'
+import Router from 'express-promise-router'
+
+import shortid from 'shortid'
+import validUrl from 'valid-url'
+
+import * as db from './db'
 
 const router = Router()
 
